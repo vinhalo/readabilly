@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Readabilly: page readability",
+  "short_name": "Readabilly",
+  "version": "0.1.0",
+  "description": "Page readbility in a minimal package.",
+  "author": "Erin Casali & Alvin Ho",
+
+  "options_page": "./options/options.html",
+
+  "icons": {
+    "16": "icons/icon_16.png",
+    "32": "icons/icon_32.png",
+    "48": "icons/icon_48.png",
+    "128": "icons/icon_128.png"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Readability score for this page"
+  },
+  "permissions": [
+    "tabs",
+    "scripting",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "run_at": "document_end",
+      "js": [
+        "contentScript.js"
+      ]
+    }
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ]
+}
