@@ -4,20 +4,55 @@ import './popup.css';
 import classifier from './classifier';
 
 (function () {
+  // Get the selected text from storage
+  chrome.storage.local.get('selectedText', function(data) {
+    var selectedText = data.selectedText;
+      // Update the popup with the selected text
+      var selectedTextElement = document.getElementById('analysisScope');
+      selectedTextElement.innerText = selectedText? "Selected text" : "Full page";
+
+  });
+
+  // Get the word count from storage
+  chrome.storage.local.get('wordCount', function(data) {
+    var wordCount = data.wordCount;
+      // Update the popup with the word count
+      var wordCountElement = document.getElementById('wordsAnalysed');
+      wordCountElement.innerText = wordCount + " words analysed";
+  });
+
   // Get the reading level from storage
-  chrome.storage.local.get('readingLevel', function(data) {
-    var readingLevel = data.readingLevel;
+  chrome.storage.local.get('fleschReadingEase', function(data) {
+    var fleschReadingEase = data.fleschReadingEase;
 
-    // Update the popup with the reading level
-    var readingLevelElement = document.getElementById('readingLevel');
-    readingLevelElement.innerText = readingLevel;
+    if (fleschReadingEase >= 0) {
+      // Valid Flesch Reading Ease score
+      // Update the popup with the reading level
+      var fleschReadingEaseElement = document.getElementById('fleschReadingEase');
+      fleschReadingEaseElement.innerText = fleschReadingEase;
 
-    // Update the popup with the difficulty text
-    var difficultyElement = document.getElementById('readingDifficultyText');
-    difficultyElement.innerText = classifier.getDifficultyText(readingLevel);
+      // Update the popup with the difficulty text
+      var difficultyElement = document.getElementById('readingDifficultyText');
+      difficultyElement.innerText = classifier.getDifficultyText(fleschReadingEase);
 
-    // Update the popup with the difficulty recommendation
-    var recommendationElement = document.getElementById('recommendationText');
-    recommendationElement.innerText = classifier.getDifficultyRecommendation(readingLevel);
+      // Update the popup with the difficulty recommendation
+      var recommendationElement = document.getElementById('recommendationText');
+      recommendationElement.innerText = classifier.getDifficultyRecommendation(fleschReadingEase);
+    }
+    else {
+      // Invalid Flesch Reading Ease Score
+      var fleschReadingEaseElement = document.getElementById('fleschReadingEase');
+      fleschReadingEaseElement.innerText = "Unable to provide reading level";
+
+      /*
+      // Update the popup with the difficulty text
+      var difficultyElement = document.getElementById('readingDifficultyText');
+      difficultyElement.innerText = "";
+
+      // Update the popup with the difficulty recommendation
+      var recommendationElement = document.getElementById('recommendationText');
+      recommendationElement.innerText = "";
+      */
+    }
   });
 })();

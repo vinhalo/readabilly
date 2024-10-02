@@ -21,7 +21,7 @@ class Readabilly {
     chrome.tabs.onActivated.addListener(this.executeContentScript.bind(this));
     // Update when switching windows
     chrome.windows.onFocusChanged.addListener(this.executeContentScript.bind(this));
-
+  
     // Run on icon click
     chrome.action.onClicked.addListener((function(tab) { this.executeContentScript(); }).bind(this) );
   }
@@ -39,14 +39,17 @@ class Readabilly {
   }
 
   onContentUpdate(request, sender, sendResponse) {
+    let fleschReadingEase = request.fleschReadingEase;
+
     // Update the icon with the rounded reading level
-    var label = Math.round(request.readingLevel);
-    label += "ʳ";
+    var label = (fleschReadingEase < 0) ? "." : Math.round(fleschReadingEase) + "ʳ";
 
     this.setExtensionIcon(label);
 
     // Save to storage for popup
-    chrome.storage.local.set({ readingLevel: request.readingLevel });
+    chrome.storage.local.set({ selectedText: request.selectedText });
+    chrome.storage.local.set({ wordCount: request.wordCount });
+    chrome.storage.local.set({ fleschReadingEase: fleschReadingEase });
   }
 
   onOptionsChange(changes, areaName) {
@@ -65,6 +68,8 @@ class Readabilly {
 
     // Set size depending on label length
     switch (label.length) {
+      case 1:
+        this.context.font = "30px Helvetica";
       case 2:
         this.context.font = "30px Helvetica";
         break;

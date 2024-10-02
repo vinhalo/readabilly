@@ -32,8 +32,8 @@ class Classifier {
         ];
     }
 
-    getDifficultyText(readingLevel) {
-        let simplifiedLevel = (Math.floor(readingLevel) % 10);
+    getDifficultyText(fleschReadingEase) {
+        let simplifiedLevel = (Math.floor(fleschReadingEase) % 10);
 
         if (simplifiedLevel < 0 || simplifiedLevel >= NUMBER_OF_LEVELS) {
             return "Something's gone wrong";
@@ -42,8 +42,8 @@ class Classifier {
         return this.difficultyText[simplifiedLevel];
     }
 
-    getDifficultyRecommendation(readingLevel) {
-        let simplifiedLevel = (Math.floor(readingLevel) % 10);
+    getDifficultyRecommendation(fleschReadingEase) {
+        let simplifiedLevel = (Math.floor(fleschReadingEase) % 10);
 
         if (simplifiedLevel < 0 || simplifiedLevel >= NUMBER_OF_LEVELS) {
             return "Something's gone wrong";
