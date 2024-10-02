@@ -44,6 +44,9 @@ class Readabilly {
     label += "ʳ";
 
     this.setExtensionIcon(label);
+
+    // Save to storage for popup
+    chrome.storage.local.set({ readingLevel: request.readingLevel });
   }
 
   onOptionsChange(changes, areaName) {

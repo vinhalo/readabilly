@@ -19,7 +19,8 @@
     "type": "module"
   },
   "action": {
-    "default_title": "Readability score for this page"
+    "default_title": "Readability score for this page",
+    "default_popup": "popup.html"
   },
   "permissions": [
     "tabs",
