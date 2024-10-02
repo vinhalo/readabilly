@@ -12,7 +12,9 @@ A Readability Chrome Extension that shows how easy it is to read the text within
 Currently in development.  To test out the extension:
 
 1. Clone this repo
-2. Navigate to the repo on your machine in a terminal, and run `npm run watch`
+2. Navigate to the repo on your machine in a terminal
+3. Run `npm install`  (Note: Node needs to be installed for this to work)
+4. Run `npm run watch`
 3. Navigate to your [Chrome Extensions] page (chrome://extensions)
 4. Enable **Developer mode** by using the toggle on the top right of the page
 5. Click the **Load unpacked** button near the top left of the page
