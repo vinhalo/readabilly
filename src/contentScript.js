@@ -13,20 +13,24 @@
 
 import readability from 'text-readability';
 
-// Check if any text is selected
-let selectedText = window.getSelection().toString();
-let textToAnalyse = selectedText.length > 0 ? selectedText : document.body.innerText;
+function sendAnalysisMessage() {
+	// Check if any text is selected
+	let selectedText = window.getSelection().toString();
+	let textToAnalyse = selectedText.length > 0 ? selectedText : document.body.innerText;
 
-// Remove all URLs from textToAnalyse
-textToAnalyse = textToAnalyse.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
+	// Remove all URLs from textToAnalyse
+	textToAnalyse = textToAnalyse.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
 
-let wordCount = readability.lexiconCount(textToAnalyse);
-let fleschReadingEase = readability.fleschReadingEase(textToAnalyse);
+	let wordCount = readability.lexiconCount(textToAnalyse);
+	let fleschReadingEase = readability.fleschReadingEase(textToAnalyse);
 
-console.log('Text analysed: ' + textToAnalyse);
+	console.log('Text analysed: ' + textToAnalyse);
 
-chrome.runtime.sendMessage({
-	selectedText: selectedText.length > 0,
-	wordCount: wordCount,
-	fleschReadingEase: fleschReadingEase
-});
+	chrome.runtime.sendMessage({
+		selectedText: selectedText.length > 0,
+		wordCount: wordCount,
+		fleschReadingEase: fleschReadingEase
+	});
+}
+
+sendAnalysisMessage();
