@@ -24,7 +24,8 @@ function sendAnalysisMessage() {
 	let wordCount = readability.lexiconCount(textToAnalyse);
 	let fleschReadingEase = readability.fleschReadingEase(textToAnalyse);
 
-	console.log('Text analysed: ' + textToAnalyse);
+	// Cap the Flesch Reading Ease score at 100
+	fleschReadingEase = Math.min(fleschReadingEase, 100);
 
 	chrome.runtime.sendMessage({
 		selectedText: selectedText.length > 0,
