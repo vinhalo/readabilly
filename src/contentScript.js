@@ -33,4 +33,9 @@ function sendAnalysisMessage() {
 	});
 }
 
+// Add event listener for document selection changed event
+document.addEventListener('selectionchange', sendAnalysisMessage);
+
+// Send the initial analysis message
 sendAnalysisMessage();
+
