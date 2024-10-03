@@ -30,6 +30,9 @@ class Readabilly {
     this.setExtensionIcon("·");
     chrome.tabs.query({ active: true, lastFocusedWindow: true }).then(function([tab]) {
       if (tab && tab.id) {
+        // skip urls like "chrome://" to avoid extension error
+        if (tab.url?.startsWith("chrome://")) return undefined;
+
         chrome.scripting.executeScript({
           target: { tabId: tab.id },
           files: [ "contentScript.js" ]
