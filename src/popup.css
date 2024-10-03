@@ -17,4 +17,52 @@ html {
 body {
   width: 364px;
   height: 242px;
+
+  padding: 20px;
+}
+
+
+/*************************************************************** SUMMARY */
+#summary {
+  margin: 0 0 18px;
+}
+
+#wordsAnalysed {
+  font-weight: 800;
+}
+
+#analysisScope {
+  margin: 2px 0 0;
+}
+
+/*************************************************************** ITEM */
+.item {
+  display: flex;
+  flex-direction: row;
+  column-gap: 12px;
+  align-items: flex-start;
+
+  background: #f5f6f6;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.item__score {
+  width: 70px;
+
+  background: #e1eCf8;
+  border-radius: 6px;
+  padding: 6px;
+
+  font-weight: 800;
+  text-align: center;
+}
+
+.item__header {
+  margin: 6px 0 2px;
+  font-weight: 800;
+}
+
+.item__advice {
+  margin: 2px 0 0;
 }

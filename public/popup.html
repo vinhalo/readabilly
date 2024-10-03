@@ -6,15 +6,18 @@
     <link rel="stylesheet" href="popup.css" />
   </head>
   <body>
-    <div>
-      <div id="analysis">
-        <p id="wordsAnalysed"></p>
-        <p id="analysisScope"></p>
-      </div>
-      <div id="results">
-        <h1 id="fleschReadingEase"></h1>
-        <p id="readingDifficultyText"></p>
-        <p id="recommendationText"></p>
+    <div id="summary">
+      <p id="wordsAnalysed"></p>
+      <p id="analysisScope"></p>
+    </div>
+
+    <div>  
+      <div id="result" class="item">
+        <p id="fleschReadingEase" class="item__score"></p>
+        <div class="item__details">
+          <p id="readingDifficultyText" class="item__header"></p>
+          <p id="recommendationText" class="item__advice"></p>  
+        </div>
       </div>
     </div>
 
