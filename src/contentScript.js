@@ -13,7 +13,22 @@
 
 import readability from 'text-readability';
 
-function sendAnalysisMessage() {
+function sendAnalysisMessage()
+{
+	// Check URL to see if it's a google doc
+	let url = window.location.href;
+	if (url.includes("docs.google.com")) {
+		console.log("This is a google doc");
+		sendGoogleDocsAnalysisMessage();
+		return;
+	}
+
+	//default
+	sendStandardAnalysisMessage();
+}
+
+function sendStandardAnalysisMessage()
+{
 	// Check if any text is selected
 	let selectedText = window.getSelection().toString();
 	let textToAnalyse = selectedText.length > 0 ? selectedText : document.body.innerText;
@@ -28,9 +43,16 @@ function sendAnalysisMessage() {
 	fleschReadingEase = Math.min(fleschReadingEase, 100);
 
 	chrome.runtime.sendMessage({
+		isGoogleDocs: false,
 		selectedText: selectedText.length > 0,
 		wordCount: wordCount,
 		fleschReadingEase: fleschReadingEase
+	});
+}
+
+function sendGoogleDocsAnalysisMessage() {
+	chrome.runtime.sendMessage({
+		isGoogleDocs: true
 	});
 }
 

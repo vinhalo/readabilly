@@ -45,11 +45,12 @@ class Readabilly {
     let fleschReadingEase = request.fleschReadingEase;
 
     // Update the icon with the rounded reading level
-    var label = (fleschReadingEase < 0) ? "." : Math.round(fleschReadingEase) + "ʳ";
+    var label = (request.isGoogleDocs || fleschReadingEase < 0) ? "." : Math.round(fleschReadingEase) + "ʳ";
 
     this.setExtensionIcon(label);
 
     // Save to storage for popup
+    chrome.storage.local.set({ isGoogleDocs: request.isGoogleDocs });
     chrome.storage.local.set({ selectedText: request.selectedText });
     chrome.storage.local.set({ wordCount: request.wordCount });
     chrome.storage.local.set({ fleschReadingEase: fleschReadingEase });
