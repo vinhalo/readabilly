@@ -38,7 +38,7 @@ import classifier from './classifier';
         // Valid Flesch Reading Ease score
         // Update the popup with the reading level
         var fleschReadingEaseElement = document.getElementById('fleschReadingEase');
-        fleschReadingEaseElement.innerText = fleschReadingEase;
+        fleschReadingEaseElement.innerText = Math.round(fleschReadingEase);
 
         // Update the popup with the difficulty text
         var difficultyElement = document.getElementById('readingDifficultyText');
