@@ -6,31 +6,31 @@ class Classifier {
     // Array of messages to be displayed depending on reading ease
     constructor() {
         this.difficultyText = [
-            "Very difficuilt to read",  // Score of 0-10
-            "Very difficuilt to read",  // Score of 10-20
-            "Very difficuilt to read",  // Score of 20-30
+            "Extremely difficult to read",  // Score of 0-10
+            "Extremely difficult to read",  // Score of 10-20
+            "Extremely difficult to read",  // Score of 20-30
             "Difficult to read",    // Score of 30-40
             "Difficult to read",    // Score of 40-50
             "Fairly difficult to read", // Score of 50-60
-            "Easily understood by 13-15 year old students", // Score of 60-70
-            "Fairly easy to read",  // Score of 70-80
+            "Understandable", // Score of 60-70
+            "Relatively easy to read",  // Score of 70-80
             "Easy to read", // Score of 80-90
-            "Very easy to read", // Score of 90-100
-            "Very easy to read", // Score of 100
+            "Extremely easy to read", // Score of 90-100
+            "Extremely easy to read", // Score of 100
         ];
 
         this.recommendationText = [
-            "Shit show",  // Score of 0-10
-            "Stop trying to be clever",  // Score of 10-20
-            "You don't have to sound smart",  // Score of 20-30
-            "Use less fancy words",    // Score of 30-40
-            "Assume your audience is dumb",    // Score of 40-50
-            "Nearly ok!", // Score of 50-60
-            "Pretty good going", // Score of 60-70
-            "Nice writing!",  // Score of 70-80
-            "That's how you do it", // Score of 80-90
-            "Wow, everyone shoulbe be able to understand this!", // Score of 90-100
-            "Wow, everyone shoulbe be able to understand this!", // Score of 100
+            "This probably needs a full rewrite, unless it's a very tough academic or technical document.",  // Score of 0-10
+            "This probably needs a full rewrite, unless it's a very tough academic or technical document.",  // Score of 10-20
+            "This probably needs a full rewrite, unless it's a very tough academic or technical document.",  // Score of 20-30
+            "Maybe this needs to be a dense text to read, but otherwise check if you can simplify the writing.",    // Score of 30-40
+            "Maybe this needs to be a dense text to read, but otherwise check if you can simplify the writing.",    // Score of 40-50
+            "It's using some elaborate words and sentences, it might be worth editing to simplify a bit.", // Score of 50-60
+            "It's good to go, but you might consider reading the text to review more complex words.", // Score of 60-70
+            "No changes needed, but you can check for longer sentences and complex words if you want to improve it.",  // Score of 70-80
+            "This is the ideal spot of readability, reaching a good balance and keeping it understandable for most people and states of mind.", // Score of 80-90
+            "This writing is understandable by the largest audience possible, further changes might make it sound too simple.", // Score of 90-100
+            "This writing is understandable by the largest audience possible, further changes might make it sound too simple.", // Score of 100
         ];
 
         this.scoreColours = [
