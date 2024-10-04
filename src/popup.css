@@ -15,8 +15,8 @@ html {
 }
 
 body {
+  /* Fixed width, dynamic height */
   width: 364px;
-  height: 242px;
 
   padding: 20px;
 }
