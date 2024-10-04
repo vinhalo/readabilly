@@ -5,6 +5,8 @@ A Readability Chrome Extension that shows how easy it is to read the text within
 ## Features
 
 - Instant feedback on readability
+- Works on full pages, or selected text
+- **Please note Google Docs are currently not supported**
 
 ## Install
 
