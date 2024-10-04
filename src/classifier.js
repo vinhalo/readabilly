@@ -46,6 +46,20 @@ class Classifier {
             "#A6D0EC", // Score of 90-100
             "#A6D0EC", // Score of 100
         ];
+
+        this.scoreItemClassNames = [
+            "redScore",  // Score of 0-10
+            "redScore",  // Score of 10-20
+            "redScore",  // Score of 20-30
+            "orangeScore",    // Score of 30-40
+            "orangeScore",    // Score of 40-50
+            "yellowScore", // Score of 50-60
+            "extraLightMintScore", // Score of 60-70
+            "lightMintScore",  // Score of 70-80
+            "greenScore", // Score of 80-90
+            "blueScore", // Score of 90-100
+            "blueScore", // Score of 100
+        ];
     }
 
     getDifficultyText(fleschReadingEase) {
@@ -76,6 +90,16 @@ class Classifier {
         }
 
         return this.scoreColours[simplifiedLevel];
+    }
+
+    getScoreClassName(fleschReadingEase) {
+        let simplifiedLevel = (Math.floor(fleschReadingEase/10));
+
+        if (simplifiedLevel < 0 || simplifiedLevel > NUMBER_OF_LEVELS) {
+            return "";
+        }
+
+        return this.scoreItemClassNames[simplifiedLevel];
     }
 }
 
