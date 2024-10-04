@@ -16,8 +16,6 @@ html {
 
 body {
   width: 364px;
-  height: 242px;
-
   padding: 20px;
 }
 
@@ -50,7 +48,6 @@ body {
 .item__score {
   width: 70px;
 
-  background: #e1eCf8;
   border-radius: 6px;
   padding: 6px;
 
@@ -65,4 +62,34 @@ body {
 
 .item__advice {
   margin: 2px 0 0;
+}
+
+/*************************************************************** SCORE COLOURS */
+.redScore {
+  background: #F3B7BE;
+}
+
+.orangeScore {
+  background: #FDD3A6;
+}
+
+.yellowScore {
+  background: #FDE1A6;
+}
+
+.extraLightMintScore {
+  background: #C2F3E1;
+}
+
+.lightMintScore {
+  background: #A8EED5;
+}
+
+.greenScore {
+  background: #A6D3BB;
+
+}
+
+.blueScore {
+  background: #A6D0EC;
 }
