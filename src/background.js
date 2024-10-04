@@ -27,7 +27,7 @@ class Readabilly {
   }
 
   executeContentScript() {
-    this.setExtensionIcon("·");
+    this.setExtensionBadge("")
     chrome.tabs.query({ active: true, lastFocusedWindow: true }).then(function([tab]) {
       if (tab && tab.id) {
         // skip urls like "chrome://" to avoid extension error
@@ -45,9 +45,8 @@ class Readabilly {
     let fleschReadingEase = request.fleschReadingEase;
 
     // Update the icon with the rounded reading level
-    var label = (request.isGoogleDocs || fleschReadingEase < 0) ? "." : Math.round(fleschReadingEase) + "ʳ";
-
-    this.setExtensionIcon(label);
+    var badgeText = (request.isGoogleDocs || fleschReadingEase < 0) ? "" : Math.round(fleschReadingEase);
+    this.setExtensionBadge(badgeText);
 
     // Save to storage for popup
     chrome.storage.local.set({ isGoogleDocs: request.isGoogleDocs });
@@ -66,38 +65,9 @@ class Readabilly {
     }
   }
 
-  setExtensionIcon(label) {
-    this.canvas = new OffscreenCanvas(32, 32);
-    this.context = this.canvas.getContext('2d');
-
-    // Set size depending on label length
-    switch (label.length) {
-      case 1:
-        this.context.font = "30px Helvetica";
-      case 2:
-        this.context.font = "30px Helvetica";
-        break;
-      case 3:
-        this.context.font = "25px Helvetica";
-        break;
-      default:
-        this.context.font = "18px Helvetica";
-    }
-
-    
-    this.context.textAlign = "center";
-    this.context.textBaseline = "middle";
-    if (this.colorManual == COLOR_DEFAULT) {
-      this.context.fillStyle = "#606368";
-      //this.context.fillStyle = (window.matchMedia('(prefers-color-scheme: dark)').matches ? "#f2f3f4" : "#606368");
-    } else {
-      this.context.fillStyle = "#" + this.colorManual;
-    }
-    this.context.fillText(label, 17, 17);
-
-    chrome.action.setIcon({
-      imageData: this.context.getImageData(0, 0, 32, 32)
-    });
+  setExtensionBadge(badgeText) {
+    // Set extension badge to badge text
+    chrome.action.setBadgeText({ text: badgeText.toString() });
   }
 }
 
