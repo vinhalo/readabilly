@@ -32,6 +32,20 @@ class Classifier {
             "Wow, everyone shoulbe be able to understand this!", // Score of 90-100
             "Wow, everyone shoulbe be able to understand this!", // Score of 100
         ];
+
+        this.scoreColours = [
+            "#F3B7BE",  // Score of 0-10
+            "#F3B7BE",  // Score of 10-20
+            "#F3B7BE",  // Score of 20-30
+            "#FDD3A6",    // Score of 30-40
+            "#FDD3A6",    // Score of 40-50
+            "#FDE1A6", // Score of 50-60
+            "#C2F3E1", // Score of 60-70
+            "#A8EED5",  // Score of 70-80
+            "#A6D3BB", // Score of 80-90
+            "#A6D0EC", // Score of 90-100
+            "#A6D0EC", // Score of 100
+        ];
     }
 
     getDifficultyText(fleschReadingEase) {
@@ -52,6 +66,16 @@ class Classifier {
         }
 
         return this.recommendationText[simplifiedLevel];
+    }
+
+    getScoreColour(fleschReadingEase) {
+        let simplifiedLevel = (Math.floor(fleschReadingEase/10));
+
+        if (simplifiedLevel < 0 || simplifiedLevel > NUMBER_OF_LEVELS) {
+            return "#000000";
+        }
+
+        return this.scoreColours[simplifiedLevel];
     }
 }
 

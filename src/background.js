@@ -4,6 +4,7 @@
 // and contentScript files.
 // For more information on background script,
 // See https://developer.chrome.com/extensions/background_pages
+import classifier from './classifier';
 
 const COLOR_DEFAULT = "";
 
@@ -68,6 +69,11 @@ class Readabilly {
   setExtensionBadge(badgeText) {
     // Set extension badge to badge text
     chrome.action.setBadgeText({ text: badgeText.toString() });
+
+    // Set extension badge background color
+    if (badgeText != "") {
+      chrome.action.setBadgeBackgroundColor({ color: classifier.getScoreColour(badgeText) });
+    }
   }
 }
 
