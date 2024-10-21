@@ -13,6 +13,21 @@
 
 import readability from 'text-readability';
 
+function setIconColour() {
+	window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+	  const iconVariant = e.matches ? "_dark" : "";
+	
+	  browser.browserAction.setIcon({
+		  path: {
+			  16: `icons/icon${iconVariant}_16.png`,
+			  32: `icons/icon${iconVariant}_32.png`,
+			  48: `icons/icon${iconVariant}_48.png`,
+			  128: `icons/icon${iconVariant}_128.png`
+		  },
+	  });
+	});
+  }
+
 function sendAnalysisMessage()
 {
 	// Check URL to see if it's a google doc
@@ -58,6 +73,8 @@ function sendGoogleDocsAnalysisMessage() {
 
 // Add event listener for document selection changed event
 document.addEventListener('selectionchange', sendAnalysisMessage);
+
+setIconColour();
 
 // Send the initial analysis message
 sendAnalysisMessage();
